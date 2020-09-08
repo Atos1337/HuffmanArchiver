@@ -1,17 +1,17 @@
 CFLAGS = -Wall -Wextra -Werror
 CCOMPILE = g++ -std=c++17 -O3 -Iinclude
 
-all: hw_03 test_hw_03
+all: Archiver tests
 
-hw_03: obj src/main.cpp obj/HuffmanArchiver.o obj/BitBuffer.o obj/Huffman.o obj/CLI.o
-	$(CCOMPILE) -o hw_03 $(CFLAGS) src/main.cpp obj/HuffmanArchiver.o obj/BitBuffer.o obj/Huffman.o obj/CLI.o
+Archiver: obj src/main.cpp obj/HuffmanArchiver.o obj/BitBuffer.o obj/Huffman.o obj/CLI.o
+	$(CCOMPILE) -o Archiver $(CFLAGS) src/main.cpp obj/HuffmanArchiver.o obj/BitBuffer.o obj/Huffman.o obj/CLI.o
 	
-test_hw_03: obj test/TestMain.cpp obj/TestCLI.o obj/TestBitBuffer.o obj/TestHuffmanArchiver.o obj/TestHuffman.o obj/CLI.o obj/BitBuffer.o obj/HuffmanArchiver.o obj/Huffman.o
-	$(CCOMPILE) -o test_hw_03 $(CFLAGS) test/TestMain.cpp obj/TestCLI.o obj/TestBitBuffer.o obj/TestHuffmanArchiver.o obj/TestHuffman.o obj/CLI.o obj/BitBuffer.o obj/HuffmanArchiver.o obj/Huffman.o
+tests: obj test/TestMain.cpp obj/TestCLI.o obj/TestBitBuffer.o obj/TestHuffmanArchiver.o obj/TestHuffman.o obj/CLI.o obj/BitBuffer.o obj/HuffmanArchiver.o obj/Huffman.o
+	$(CCOMPILE) -o tests $(CFLAGS) test/TestMain.cpp obj/TestCLI.o obj/TestBitBuffer.o obj/TestHuffmanArchiver.o obj/TestHuffman.o obj/CLI.o obj/BitBuffer.o obj/HuffmanArchiver.o obj/Huffman.o
 
 clean: 
-	rm -f hw_03
-	rm -f test_hw_03
+	rm -f Archiver
+	rm -f tests
 	rm -rf obj
 
 obj: 
